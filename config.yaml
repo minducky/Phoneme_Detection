@@ -1,0 +1,33 @@
+## Phoneme Detection Configuration
+# Input configuration
+stim_dir: './stimuli'           # Stimulus directory
+keyword: 'tstory'               # Files only including keyword (e.g. 'tstory' : only files with tstory is processed)
+
+# Output configuration
+result_dir: './results'         # Results directory
+
+# Model configuration
+model_path: './saved_model'     # Pretrained Deep learning model directory
+sampling_rate: 16000            # Sampling rate for Deep learning model
+
+# ASR configuration
+asr:
+  beam_width: 100
+  device: -1
+
+# Phoneme detection configuration
+phoneme_detection:
+  frame_shift: 0.02
+  max_consecutive_phonemes: 2
+
+# Processing options
+enable_visualization: true      # Generate mel-spectrogram with phoneme markers
+enable_segmentation: true       # Save individual phoneme audio segments
+enable_feature_extraction: true # Convert to spike trains and save as .npy
+
+# Feature extraction settings
+spike_train:
+  source_rate: 50              # Original phoneme detection rate (Hz), do not change
+  target_rate: 64              # Target EEG sampling rate (Hz)
+  duration: 120                # Duration in seconds
+  resampling_method: 'nearest' # 'nearest' or 'window'
